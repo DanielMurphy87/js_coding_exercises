@@ -64,7 +64,19 @@ export function countLinuxUsers(users) {
 
 export function getMeanScore(scores) {
     if (scores === undefined) throw new Error("scores is required");
-    // Add your code here!
+    let count = 0;
+    let total = 0;
+    let mean = 0;
+
+    // Trying out a forEach loop Headers.
+    scores.forEach(function(item) {
+        total += item;
+        count++;
+    });
+    mean = total / count;
+    if (mean % 1 != 0) {
+        return parseFloat(mean.toFixed(2));
+    } else return mean;
 }
 
 export function simpleFizzBuzz(n) {
