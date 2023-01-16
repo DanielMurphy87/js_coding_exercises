@@ -45,7 +45,10 @@ export function reverseWord(word) {
 
 export function reverseAllWords(words) {
     if (words === undefined) throw new Error("words is required");
-    // Add your code here!
+    for (let i = 0; i < words.length; i++) {
+        words[i] = reverseWord(words[i]);
+    }
+    return words;
 }
 
 export function countLinuxUsers(users) {
