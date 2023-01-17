@@ -59,7 +59,7 @@ export const findNeedle = (haystack, searchTerm) => {
     if (haystack === undefined) throw new Error("haystack is required");
     if (searchTerm === undefined) throw new Error("searchTerm is required");
 
-    return Object.values(haystack).some(val => val.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+    return Object.values(haystack).some(val => val.toString().toLowerCase().includes(searchTerm.toLowerCase()));
 };
 
 export const getWordFrequencies = (str) => {
