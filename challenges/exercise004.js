@@ -1,98 +1,82 @@
 export function findSmallNums(nums) {
     if (!nums) throw new Error("nums is required");
-    let newNums = [];
 
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] < 1) {
-            newNums.push(nums[i]);
+    let newNums = nums.filter(function(item) {
+        if (item < 1) {
+            return true;
+        } else {
+            return false;
         }
-    }
+    });
     return newNums;
 }
 
 export function findNamesBeginningWith(names, char) {
     if (!names) throw new Error("names is required");
     if (!char) throw new Error("char is required");
-    let newNames = [];
 
-    for (let i = 0; i < names.length; i++) {
-        if (names[i][0] == char) {
-            newNames.push(names[i]);
-        }
-    }
-    return newNames;
+    return names.filter(function(item) {
+        if (item.charAt(0) == char)
+            return item;
+    });
 }
 
 export function findVerbs(words) {
     if (!words) throw new Error("words is required");
-    let newWords = [];
 
-    for (let i = 0; i < words.length; i++) {
-        if (words[i].slice(0, 3) == "to ") {
-            newWords.push(words[i]);
-        }
-    }
-    return newWords;
+    return words.filter(function(item) {
+        if (item.slice(0, 3) == "to ")
+            return item;
+    });
 }
 
 export function getIntegers(nums) {
     if (!nums) throw new Error("nums is required");
-    let newNums = [];
 
-    for (let i = 0; i < nums.length; i++) {
-        if (Number.isInteger(nums[i])) {
-            newNums.push(nums[i]);
-        }
-    }
-    return newNums;
+    return nums.filter(function(item) {
+        if (Number.isInteger(item))
+            return item;
+    });
 }
 
 export function getCities(users) {
     if (!users) throw new Error("users is required");
-    let newUsers = [];
 
-    for (let i = 0; i < users.length; i++) {
-        newUsers.push(users[i]["data"]["city"]["displayName"]);
-    }
-    return newUsers;
+    return users.map(function(item) {
+        return item["data"]["city"]["displayName"];
+    });
 }
 
 export function getSquareRoots(nums) {
     if (!nums) throw new Error("nums is required");
-    let newNums = [];
 
-    for (let i = 0; i < nums.length; i++) {
-        let temp = Math.sqrt(nums[i]);
+    return nums.map(function(item) {
+        let temp = Math.sqrt(item);
 
         if (temp % 1 != 0) {
             temp = parseFloat(temp.toFixed(2));
         }
-        newNums.push(temp);
-    }
-    return newNums;
+        return temp;
+    });
 }
 
 export function findSentencesContaining(sentences, str) {
     if (!sentences) throw new Error("sentences is required");
     if (!str) throw new Error("str is required");
-    let newSentences = [];
 
-    for (let i = 0; i < sentences.length; i++) {
-        let senten = sentences[i].toLowerCase();
+    return sentences.filter(function(item) {
+        let senten = item.toLowerCase();
         let stri = str.toLowerCase();
         if (senten.includes(stri)) {
-            newSentences.push(sentences[i]);
+            return item;
         }
-    }
-    return newSentences;
+    });
 }
 
 export function getLongestSides(triangles) {
     if (!triangles) throw new Error("triangles is required");
-    let newTriangles = [];
 
-    for (let i = 0; i < triangles.length; i++) {
-        newTriangles.push(Math.max(...triangles[i]));
-    }
-    return newTriangles;
+    return triangles.map(function(item) {
+        return Math.max(...item);
+    });
 }
