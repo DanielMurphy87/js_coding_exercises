@@ -53,5 +53,20 @@ export function checkIngredients(menu, ingredient) {
 export function duplicateNumbers(arr1, arr2) {
     if (arr1 === undefined) throw new Error("arr1 is required");
     if (arr2 === undefined) throw new Error("arr2 is required");
-    // Your code here!
+    let uniqueNumbers = {};
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr2.indexOf(arr1[i]) !== -1) {
+            uniqueNumbers[arr1[i]] = true;
+        }
+    }
+    let result = [];
+
+    for (let num in uniqueNumbers) {
+        result.push(parseInt(num));
+    }
+    result.sort(function(a, b) {
+        return a - b;
+    });
+    return result;
 }
