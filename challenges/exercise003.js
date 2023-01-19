@@ -1,72 +1,34 @@
 export function getSquares(nums) {
     if (nums === undefined) throw new Error("nums is required");
-    if (nums.length > 0) {
-        for (let i = 0; i < nums.length; i++) {
-            nums[i] = nums[i] ** 2;
-        }
-        return nums;
-    } else return nums;
+
+    return nums.map(num => num ** 2);
 }
 
 export function camelCaseWords(words) {
     if (words === undefined) throw new Error("words is required");
-    let newWord = "";
 
-    for (let i = 0; i < words.length; i++) {
-        if (i == 0) {
-            newWord += words[i];
-        } else if (i > 0) {
-            newWord += words[i][0].toUpperCase() + words[i].substring(1);
-        } else break;
-    }
-    return newWord;
+    return words.map((word, index) => {
+        if (index === 0) return word;
+        return word[0].toUpperCase() + word.slice(1);
+    }).join('');
 }
 
 export function getTotalSubjects(people) {
     if (people === undefined) throw new Error("people is required");
-    let num = 0;
 
-    for (let i = 0; i < people.length; i++) {
-        if (people[i]["subjects"].length > 0) {
-            for (let j = 0; j < people[i]["subjects"].length; j++) {
-                num++;
-            }
-        }
-    }
-    return num;
+    return people.reduce((num, person) => num + person.subjects.length, 0);
 }
 
 export function checkIngredients(menu, ingredient) {
     if (menu === undefined) throw new Error("menu is required");
     if (!ingredient) throw new Error("ingredient is required");
 
-    for (let i = 0; i < menu.length; i++) {
-        for (let j = 0; j < menu[i]["ingredients"].length; j++) {
-            if (menu[i]["ingredients"][j] == ingredient) {
-                return true;
-            }
-        }
-    }
-    return false;
+    return menu.some(item => item.ingredients.includes(ingredient));
 }
 
 export function duplicateNumbers(arr1, arr2) {
     if (arr1 === undefined) throw new Error("arr1 is required");
     if (arr2 === undefined) throw new Error("arr2 is required");
-    let uniqueNumbers = {};
 
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr2.indexOf(arr1[i]) !== -1) {
-            uniqueNumbers[arr1[i]] = true;
-        }
-    }
-    let result = [];
-
-    for (let num in uniqueNumbers) {
-        result.push(parseInt(num));
-    }
-    result.sort(function(a, b) {
-        return a - b;
-    });
-    return result;
+    return [...new Set(arr1.filter(num => arr2.includes(num)))].sort((a, b) => a - b);
 }
