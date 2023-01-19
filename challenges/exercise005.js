@@ -2,32 +2,15 @@ export const findNextNumber = (nums, n) => {
     if (nums === undefined) throw new Error("nums is required");
     if (n === undefined) throw new Error("n is required");
 
-    const index = nums.findIndex(num => num == n);
-    if (index === -1) {
-        return null;
-    }
-    if (index === nums.length - 1) {
-        return null;
-    }
-    return nums[index + 1];
+    const nextNumIndex = nums.findIndex((num, i) => num === n && i !== nums.length - 1);
+    return nextNumIndex === -1 ? null : nums[nextNumIndex + 1];
 };
 
 export const count1sand0s = (str) => {
     if (str === undefined) throw new Error("str is required");
-    let count1s = 0;
-    let count0s = 0;
-
-    str.split('').forEach(char => {
-        if (char === "1") {
-            count1s++;
-        } else if (char === "0") {
-            count0s++;
-        }
-    });
-    return {
-        1: count1s,
-        0: count0s
-    };
+    let count = { 1: 0, 0: 0 };
+    str.split('').forEach(char => count[char] ? count[char]++ : count[char] = 1);
+    return count;
 };
 
 export const reverseNumber = (n) => {
