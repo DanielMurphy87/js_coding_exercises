@@ -17,3 +17,18 @@ describe('sumDigits', () => {
         expect(sumDigits(0)).toBe(0);
     });
 });
+
+describe('createRange', () => {
+    test('should return the range [3, 5, 7, 9, 11] when start=3, end=11, step=2', () => {
+        expect(createRange(3, 11, 2)).toEqual([3, 5, 7, 9, 11]);
+    });
+    test('should return the range [1, 2, 3, 4, 5] when start=1, end=5, step is not provided', () => {
+        expect(createRange(1, 5)).toEqual([1, 2, 3, 4, 5]);
+    });
+    test('should return the range [2, 4, 6, 8, 10] when start=2, end=10, step=2', () => {
+        expect(createRange(2, 10, 2)).toEqual([2, 4, 6, 8, 10]);
+    });
+    test('should return an empty array when start is greater than end', () => {
+        expect(createRange(5, 1)).toEqual([]);
+    });
+});
