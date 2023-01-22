@@ -116,4 +116,18 @@ export const hexToRGB = (hexStr) => {
  */
 export const findWinner = (board) => {
     if (board === undefined) throw new Error("board is required");
+
+    // Check rows
+    for (let i = 0; i < board.length; i++) {
+        if (board[i][0] === board[i][1] && board[i][1] === board[i][2] && board[i][0] !== null) return board[i][0];
+    }
+    // Check columns
+    for (let j = 0; j < board[0].length; j++) {
+        if (board[0][j] === board[1][j] && board[1][j] === board[2][j] && board[0][j] !== null) return board[0][j];
+    }
+    // Check diagonal
+    if (board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== null) return board[0][0];
+    if (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] !== null) return board[0][2];
+
+    return null;
 };

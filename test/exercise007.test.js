@@ -79,3 +79,33 @@ describe("hexToRGB", () => {
         expect(result).toEqual("rgb(170, 187, 204)");
     });
 });
+
+describe("findWinner", () => {
+    test("should return 'X' if player X has won", () => {
+        const board = [
+            ["X", "X", "X"],
+            [null, null, null],
+            [null, null, null]
+        ];
+        const result = findWinner(board);
+        expect(result).toEqual("X");
+    });
+    test("should return '0' if player 0 has won", () => {
+        const board = [
+            ["0", "X", "X"],
+            ["0", "0", "X"],
+            ["0", null, null]
+        ];
+        const result = findWinner(board);
+        expect(result).toEqual("0");
+    });
+    test("should return 'X' ", () => {
+        const board = [
+            ["X", "0", "X"],
+            ["0", "X", "0"],
+            ["X", "0", "X"]
+        ];
+        const result = findWinner(board);
+        expect(result).toEqual("X");
+    });
+});
