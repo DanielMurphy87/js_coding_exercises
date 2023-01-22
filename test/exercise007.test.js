@@ -66,3 +66,16 @@ describe("getScreentimeAlertList", () => {
         expect(result).toEqual([]);
     });
 });
+
+describe("hexToRGB", () => {
+    test("should convert hexadecimal color code to RGB format", () => {
+        const hexStr = "#FF1133";
+        const result = hexToRGB(hexStr);
+        expect(result).toEqual("rgb(255, 17, 51)");
+    });
+    test("should convert another hexadecimal color code to RGB format", () => {
+        const hexStr = "#AABBCC";
+        const result = hexToRGB(hexStr);
+        expect(result).toEqual("rgb(170, 187, 204)");
+    });
+});
