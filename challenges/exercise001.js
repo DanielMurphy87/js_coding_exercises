@@ -14,7 +14,7 @@ export function generateInitials(firstName, lastName) {
 export function addVAT(originalPrice, vatRate) {
     if (originalPrice === undefined) throw new Error("originalPrice is requied");
     if (vatRate === undefined) throw new Error("vatRate is required");
-    let newPrice = originalPrice * (vatRate / 100 + 1);
+    const newPrice = originalPrice * (vatRate / 100 + 1);
     if (newPrice % 1 !== 0) {
         return parseFloat(newPrice.toFixed(2));
     } else return newPrice;
@@ -23,7 +23,7 @@ export function addVAT(originalPrice, vatRate) {
 export function getSalePrice(originalPrice, reduction) {
     if (originalPrice === undefined) throw new Error("originalPrice is required");
     if (reduction === undefined) throw new Error("reduction is required");
-    let newPrice = originalPrice - (originalPrice * (reduction / 100));
+    const newPrice = originalPrice - (originalPrice * (reduction / 100));
     if (newPrice % 1 !== 0) {
         return parseFloat(newPrice.toFixed(2));
     } else return newPrice;

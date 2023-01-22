@@ -1,6 +1,6 @@
 export function getFillings(sandwich) {
     if (sandwich === undefined) throw new Error("ingredients is required");
-    return sandwich["fillings"];
+    return sandwich.fillings;
 }
 
 export function isFromManchester(person) {
@@ -30,7 +30,7 @@ export function countSheep(arr) {
 
 export function hasMPostCode(person) {
     if (person === undefined) throw new Error("person is required");
-    let postCode = person["address"]["postCode"];
+    const postCode = person.address.postCode;
 
     if (postCode[0] === "M") {
         // Check if second character is a number using RegEx.

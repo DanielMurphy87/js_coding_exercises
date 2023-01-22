@@ -8,7 +8,7 @@ export const findNextNumber = (nums, n) => {
 
 export const count1sand0s = (str) => {
     if (str === undefined) throw new Error("str is required");
-    let count = { 1: 0, 0: 0 };
+    const count = { 1: 0, 0: 0 };
     str.split('').forEach(char => count[char] ? count[char]++ : count[char] = 1);
     return count;
 };
@@ -32,7 +32,7 @@ export const sumArrays = (arrs) => {
 
 export const arrShift = (arr) => {
     if (arr === undefined) throw new Error("arr is required");
-    let newArr = [...arr];
+    const newArr = [...arr];
 
     [newArr[0], newArr[newArr.length - 1]] = [newArr[newArr.length - 1], newArr[0]];
     return newArr;
@@ -47,8 +47,8 @@ export const findNeedle = (haystack, searchTerm) => {
 
 export const getWordFrequencies = (str) => {
     if (str === undefined) throw new Error("str is required");
-    let cleanedString = str.toLowerCase().replace(/[^\w\s]/gi, '');
-    let wordList = cleanedString.split(" ");
+    const cleanedString = str.toLowerCase().replace(/[^\w\s]/gi, '');
+    const wordList = cleanedString.split(" ");
     let wordFrequency = {};
 
     wordList.forEach((word) => {

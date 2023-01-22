@@ -26,7 +26,7 @@ export const createRange = (start, end, step = 1) => {
     if (start > end && step > 0) return [];
     if (start < end && step < 0) return [];
 
-    let range = [];
+    const range = [];
 
     for (let i = start; i <= end; i += step) {
         range.push(i);
@@ -67,7 +67,7 @@ export const getScreentimeAlertList = (users, date) => {
     if (users === undefined) throw new Error("users is required");
     if (date === undefined) throw new Error("date is required");
 
-    let alertList = [];
+    const alertList = [];
     users.forEach((user) => {
         let totalUsage = 0;
         user.screenTime.forEach((usage) => {
