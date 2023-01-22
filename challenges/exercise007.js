@@ -66,6 +66,22 @@ export const createRange = (start, end, step = 1) => {
 export const getScreentimeAlertList = (users, date) => {
     if (users === undefined) throw new Error("users is required");
     if (date === undefined) throw new Error("date is required");
+
+    let alertList = [];
+    users.forEach((user) => {
+        let totalUsage = 0;
+        user.screenTime.forEach((usage) => {
+            if (usage.date === date) {
+                Object.values(usage.usage).forEach((value) => {
+                    totalUsage += value;
+                });
+                if (totalUsage > 100) {
+                    alertList.push(user.username);
+                }
+            }
+        });
+    });
+    return alertList;
 };
 
 /**
